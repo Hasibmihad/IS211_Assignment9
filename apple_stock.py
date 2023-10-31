@@ -9,7 +9,7 @@ try:
         page_content = response.read()
 
         soup = BeautifulSoup(page_content, 'html.parser')
-        print(soup.prettify())
+        #print(soup.prettify())
         # we need to look into  <table class="W(100%) M(0)" data-test="historical-prices">
         table = soup.find('table', class_='W(100%) M(0)')
        # for close price , i found class name <tr class="BdT Bdc($seperatorColor) C($tertiaryColor) H(36px)">
@@ -23,7 +23,7 @@ try:
             date = row.find_all('span')[0].text
             close_price = row.find_all('span')[4].text
 
-            #print(f"Date: {date}, Close Price: {close_price}")
+            print(f"Date: {date}, Close Price: {close_price}")
 except urllib.error.HTTPError as e:
     print(f"HTTP Error: {e.code} - {e.reason}")
 except Exception as e:
